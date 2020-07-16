@@ -1,9 +1,20 @@
 ---
 layout: post
 title: Markdown and HTML
+subtitle: "This is a subtitle"
+tags: [sample, markdown, html]
 ---
 
+
+##### Table of Contents  
+[Headers](#headers)  
+[Emphasis](#emphasis)
+
+## Headers
+
 Jekyll supports the use of [Markdown](http://daringfireball.net/projects/markdown/syntax) with inline HTML tags which makes it easier to quickly write posts with Jekyll, without having to worry too much about text formatting. A sample of the formatting follows.
+
+## Emphasis
 
 Tables have also been extended from Markdown:
 
