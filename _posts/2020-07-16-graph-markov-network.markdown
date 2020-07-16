@@ -6,7 +6,6 @@ tags:
 - Markov
 - Neural Network
 - Missing Data
-Field name: 
 ---
 
 > This is a post introducing a simple neural network structure.
