@@ -1,8 +1,12 @@
 ---
-layout: post
 title: Markdown and HTML
-subtitle: "This is a subtitle"
-tags: [sample, markdown, html]
+date: 2014-11-28 00:00:00 Z
+tags:
+- sample
+- markdown
+- html
+layout: post
+subtitle: This is a subtitle
 comments: true
 ---
 
