@@ -3,6 +3,7 @@ layout: post
 title: Markdown and HTML
 subtitle: "This is a subtitle"
 tags: [sample, markdown, html]
+comments: true
 ---
 
 
