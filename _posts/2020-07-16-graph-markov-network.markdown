@@ -12,15 +12,14 @@ Section: name
 > This is a post introducing a Graph Markov Network structure for dealing with spatial-temporal data with missing values.
 
 ##### Table of Contents  
- 
-[Spatial-Temporal Series](##Spatial-Temporal Series)
 [Traffic Forecasting with Missing Values](##[Traffic Forecasting with Missing Values)
 [Graph Markov Process](##Graph Markov Process)
 [Graph Markov Network](##Graph Markov Network)
 
 
-## Spatial-Temporal Series
 ## Traffic Forecasting with Missing Values
+Traffic forecasting is a classical task for traffic management and it plays an important role in intelligent transportation systems. However, since traffic data are mostly collected by traffic sensors or probe vehicles, sensor failures and the lack of probe vehicles will inevitably result in missing values in the collected raw data for some specific links in the traffic network. 
+
 ## Graph Markov Process
 ## Graph Markov Network 
 
