@@ -9,7 +9,7 @@ tags:
 Section: name
 ---
 
-> This is a post introducing a simple neural network structure.
+> This is a post introducing a Graph Markov Network structure for dealing with spatial-temporal data with missing values.
 
 ##### Table of Contents  
 [Headers](#headers)  
