@@ -12,11 +12,11 @@ Section: name
 > This is a post introducing a Graph Markov Network structure for dealing with spatial-temporal data with missing values.
 
 ##### Table of Contents  
-[Time Series](##headers)  
-[Spatial-Temporal Series](##emphasis)
-[Traffic Forecasting with Missing Values](##emphasis)
-[Graph Markov Process](##emphasis)
-[Graph Markov Network](##emphasis)
+[Time Series](##Time Series)  
+[Spatial-Temporal Series](##Spatial-Temporal Series)
+[Traffic Forecasting with Missing Values](##[Traffic Forecasting with Missing Values)
+[Graph Markov Process](##Graph Markov Process)
+[Graph Markov Network](##Graph Markov Network)
 
 ## Time Series
 ## Spatial-Temporal Series
