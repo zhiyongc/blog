@@ -8,6 +8,7 @@ tags:
 layout: post
 subtitle: This is a subtitle
 comments: true
+hide: true
 ---
 
 this is
