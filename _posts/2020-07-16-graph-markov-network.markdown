@@ -9,7 +9,7 @@ tags:
 Section: name
 ---
 
-> This is a post introducing a Graph Markov Network structure for dealing with spatial-temporal data with missing values.
+> This is a post introducing a Graph Markov Network structure for dealing with spatial-temporal data forecasting with missing values.
 
 
 {: class="table-of-content"}
@@ -130,7 +130,7 @@ As we assume the traffic state transition process follows the graph Markov proce
 A completed state is denoted by $$\tilde{x}_ t$$, in which all missing values are filled based on historical data. The completed state consists of two parts, the observed state values and the inferred state values:
 
 $$
-    \tilde{x}_ t = \underbrace{x_t \odot m_t}_ \text{observed values} + \underbrace{\tilde{x}_ t \odot (1-m_t)}_ \text{infered missing values}
+    \tilde{x}_ t = \underbrace{x_t \odot m_t}_ \text{observed values} + \underbrace{\tilde{x}_ t \odot (1-m_t)}_ \text{inferred missing values}
 $$
 
 where $$\tilde{x}_ t \odot (1-m_t)$$ is the inferred part. Because $$x_t \odot m_t = x_t$$, 
@@ -194,42 +194,37 @@ $$
 
 When $$n$$ is large enough, we consider $$\mathcal{O}(\tilde{x}_ {t-(n-1)})$$ is a negligibly term.
 
-The graph Markov process can be demonstrated by the following figure.
+The graph Markov process can be demonstrated by the following figure. The gray-colored nodes in the left sub-figure demonstrate the nodes with missing values. Vectors on the right side represent the traffic states. The traffic states at time $t$ are numbered to match the graph and the vector. The future state (in red color) can be inferred from their neighbors in the previous steps.
 
-![Problem definition 3]({{ '/assets/img/GMP.png' | relative_url }})
+![GMP]({{ '/assets/img/GMP.png' | relative_url }})
 {: style="width: 100%;" class="center"}
 
 ### Graph Markov Network 
 
 
 
-Alternatively, they can be shown on a new line:
+The graph Markov network (GMN) is designed based on the graph Markov process. Since we consider the term $$\mathcal{O}(\tilde{x}_ {t-(n-1)})$$ is small enough and omitted in GMN for simplicity. 
 
+As described in Equation \ref{eq:GMP_def}, the graph Markov process contains $$n$$ transition weight matrices and the product of the these matrices $$(\prod_{j=0}^{i} H_{t-j}) = (\prod_{j=0}^{i} \mathbf{A}^j \odot P_{t-j})$$ measures the contribution of $$x_{t-i}$$ for generating the $$\tilde{x}_ t$$. To reduce matrix product operations and at the same time keep the learning capability in the GMP, we simplify the $$(\prod_ {j=0}^{i} \mathbf{A}^j \odot P_{t-j})$$ by $$(\mathbf{A}^{i+1} \odot W_{i+1})$$, where $$W_{i+1} \in \mathbb{R}^{S \times S}$$ is a weight matrix. In this way, $$(\mathbf{A}^{i+1} \odot W_{i+1})$$ can directly measure the contribution of $$x_{t-i}$$ for generating the $$\tilde{x}_ t$$ and skip the intermediate state transition processes. Further, the GMP still has $$n$$ weight matrices ($$\{\mathbf{A}^1 \odot W_1, ..., \mathbf{A}^n \odot W_n\}$$), and thus, the learning capability in terms of the size of parameters does not change. The benefits of the simplification is that the GMP can reduce $$\frac{n(n-1)}{2}$$ times of multiplication between two $$S\times S$$ matrices in total. 
+
+Based on the GMP and the aforementioned simplification, the **graph Markov network** for traffic forecasting with missing values can be defined as
 
 $$
-\begin{aligned}
-p(\theta \vert \xi_t, a_t, s_{t+1}) 
-&= \frac{p(\theta \vert \xi_t, a_t) p(s_{t+1} \vert \xi_t, a_t; \theta)}{p(s_{t+1}\vert\xi_t, a_t)} \\
-&= \frac{p(\theta \vert \xi_t) p(s_{t+1} \vert \xi_t, a_t; \theta)}{p(s_{t+1}\vert\xi_t, a_t)} & \scriptstyle{\text{; because action doesn't affect the belief.}} \\
-&= \frac{\color{red}{p(\theta \vert \xi_t)} p(s_{t+1} \vert \xi_t, a_t; \theta)}{\int_\Theta p(s_{t+1}\vert\xi_t, a_t; \theta) \color{red}{p(\theta \vert \xi_t)} d\theta} & \scriptstyle{\text{; red part is hard to compute directly.}}
-\end{aligned}
+\hat{x}_{t+1} = \sum_{i=0}^{n-1} \gamma^{i+1} (\mathbf{A}^{i+1} \odot W_{i+1}) (x_{t-i} \odot \bigodot_{j=0}^{i-1} (1-m_{t-j}))
 $$
 
+where $$\hat{x}_ {t+1}$$ is the predicted traffic state for the future time step $$t+1$$ and $$\{W_1,...,W_n\}$$ are the model's weight matrices that can be learned and updated during the training process. 
 
-Highlighting for code in Jekyll is done using Pygments or Rouge. This theme makes use of Rouge by default.
+Structure of the graph Markov network is shown below. Here, $$H_{t-j} = \mathbf{A}^j\odot W_j$$.
 
-{% highlight js %}
-// count to ten
-for (var i = 1; i <= 10; i++) {
-    console.log(i);
-}
+![GMN]({{ '/assets/img/GMN.png' | relative_url }})
+{: style="width: 100%;" class="center"}
 
-// count to twenty
-var j = 0;
-while (j < 20) {
-    j++;
-    console.log(j);
-}
-{% endhighlight %}
+### Code 
 
-$$ f(x) = \int \frac{2x^2+4x+6}{x-2} $$
+
+### Reference 
+
+For more details of the model and experimental results, please refer to 
+
+[1] Zhiyong Cui, et al. [Graph markov network for traffic forecasting with missing data](https://www.sciencedirect.com/science/article/pii/S0968090X20305866). Transportation Research Part C: Emerging Technologies, 2020. \[[arXiv](https://arxiv.org/abs/1912.05457)\]
