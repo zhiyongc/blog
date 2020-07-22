@@ -1,4 +1,13 @@
 ---
+title: Blog
+timezone: UTC
+collections:
+  posts:
+    title: Posts
+    output: true
+  uploads:
+    title: Uploads
+    output: true
 baseurl: "/blog"
 url: https://zhiyongc.github.io/
 theme_settings:
