@@ -1,13 +1,3 @@
----
-title: Blog
-timezone: UTC
-collections:
-  posts:
-    title: Posts
-    output: true
-  uploads:
-    title: Uploads
-    output: true
 baseurl: "/blog"
 url: https://zhiyongc.github.io/
 theme_settings:
@@ -22,7 +12,7 @@ theme_settings:
   header_text_feature_image: 
   footer_text: 
   rss: false
-  email_address: 
+  email_address: zhiyongc@uw.edu
   behance: 
   bitbucket: 
   dribbble: 
