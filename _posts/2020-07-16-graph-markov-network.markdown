@@ -220,6 +220,7 @@ Structure of the graph Markov network is shown below. Here, $$H_{t-j} = \mathbf{
 
 ### Code 
 
+The code for implementing the GMN is published in this [GitHub Repo](https://github.com/zhiyongc/GraphMarkovNetwork). [![GitHub stars](https://img.shields.io/github/stars/zhiyongc/GraphMarkovNetwork.svg?logo=github&label=Stars&logoColor=white&color=blue)](https://github.com/zhiyongc/GraphMarkovNetwork)
 
 ### Reference 
 
