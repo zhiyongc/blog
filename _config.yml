@@ -17,9 +17,6 @@ theme_settings:
   gravatar: 
   description: A website with blog posts and pages
   header_text: 
-    # |-
-    # <p> </p>
-    # <p> </p>
   header_text_feature_image: 
   footer_text: 
   rss: false
