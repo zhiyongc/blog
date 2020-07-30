@@ -1,6 +1,10 @@
 ---
 title: Blog
+<<<<<<< HEAD
 timezone: America/Los_Angeles
+=======
+timezone: UTC
+>>>>>>> b88fc7faaa2440aba3b7a5f5ae5502655603b3a5
 collections:
   posts:
     title: Posts
