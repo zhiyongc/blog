@@ -1,6 +1,6 @@
 ---
 title: Blog
-timezone: America/Los_Angeles
+timezone: UTC
 collections:
   posts:
     title: Posts
